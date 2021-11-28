@@ -93,7 +93,7 @@ namespace fscr
         auto X_even = fft_dnc(slice_step(false, x));
         auto X_odd = fft_dnc(slice_step(true, x));
         const auto terms = fscr::expFlatten(
-          (std::complex<T>(0, -2*M_PI) * fscr::matrix_d::arange_1d_row(N)) / N
+          (std::complex<T>(0, -2*M_PI) * fscr::matrix_d::arange_1d_row(N)) / static_cast<T>(N)
         );
         
         return concat_vec(
@@ -118,7 +118,7 @@ namespace fscr
       auto dft_k = [&x, N](const size_t k) -> complex_type {
         complex_type summed(0.0, 0.0);
         for (size_t n=0; n<N; ++n) {
-          summed += x[n] * std::exp(complex_type(0, -2) * complex_type(M_PI * k * n) / complex_type(N));
+          summed += x[n] * std::exp(complex_type(0, -2) * complex_type(M_PI * k * n) / complex_type(static_cast<T>(N)));
         }
         return summed;
       };
@@ -140,7 +140,7 @@ namespace fscr
       const auto n = fscr::matrix_t<T>::arange_1d_row(N);
       const auto k = fscr::matrix_t<T>::arange_1d_col(N);
       constexpr auto min_2_j_pi = std::complex<T>(0, -2 * M_PI);
-      const auto M = fscr::exp(((min_2_j_pi * k) * n) / N);
+      const auto M = fscr::exp(((min_2_j_pi * k) * n) / static_cast<T>(N));
       return fscr::dot(M, x);
     }
   };
