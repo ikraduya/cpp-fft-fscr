@@ -1,5 +1,7 @@
 # cpp-fft-fscr | C++ Fast Fourier Transform Library - From Scratch
 
+![github CI status](https://github.com/ikraduya/cpp-fft-fscr/actions/workflows/ci.yml/badge.svg)
+
 **cpp-fft-fscr** is a header-only C++ library of [Discrete Fourier Transform (DFT)](https://en.wikipedia.org/wiki/Discrete_Fourier_transform) and  [Fast Fourier Transform (FFT)](https://en.wikipedia.org/wiki/Fast_Fourier_transform) functions created without any dependencies. This library is created From Scratch (fscr), literally.
 
 In addition to provide a C++ library without dependencies, the **fscr** libraries are my attemp to make an easy-to-learn libraries for people who want to learn, especially, DFT and FFT implementation from scratch.
